@@ -5,6 +5,8 @@
 ------------------------------ */
 
 :root {
+  --font-sans: "Roboto", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+
   --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Noto Sans",
     "Helvetica Neue", sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
 
@@ -434,3 +436,40 @@ button:disabled {
     padding: 14px;
   }
 }
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 10px;
+  border-radius: var(--r-10);
+  text-decoration: none;
+}
+
+.brand:hover {
+  background: #f3f4f6;
+  text-decoration: none;
+}
+
+/* Увеличиваем логотип */
+.brand__logo {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px; /* чтобы иконка выглядела аккуратно */
+  object-fit: cover;
+}
+
+/* Подпись: Roboto + пастельно-зелёный */
+.brand__text {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: 0.2px;
+  color: #86c9a3;
+}
+
+/* На всякий случай: не применять "active black" к бренду */
+.nav .brand.active {
+  background: transparent;
+  color: inherit;
+}
+

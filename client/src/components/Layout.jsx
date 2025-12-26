@@ -1,6 +1,8 @@
 import React from "react";
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet, Link } from "react-router-dom";
 import { useAuth } from "../auth/AuthContext.jsx";
+import logo from "../assets/brand/logo.png";
+
 
 export default function Layout() {
   const { isAuthed, logout } = useAuth();
@@ -9,9 +11,10 @@ export default function Layout() {
     <>
       <header className="header">
         <nav className="nav">
-          <NavLink to="/" end>
-            Home
-          </NavLink>
+          <Link to="/" className="brand" aria-label="Fruit Shop">
+            <img className="brand__logo" src={logo} alt="Fruit Shop" />
+            <span className="brand__text">Fruit Shop</span>
+          </Link>
 
           {isAuthed && (
             <NavLink to="/goods" end>
