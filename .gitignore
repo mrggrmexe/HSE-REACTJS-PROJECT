@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2575.6">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000; min-height: 14.0px}
+    span.s1 {font-kerning: none}
+  </style>
+</head>
+<body>
+<p class="p1"><span class="s1">###############################################################################</span></p>
+<p class="p1"><span class="s1"># OS (macOS / Windows / Linux)</span></p>
+<p class="p1"><span class="s1">###############################################################################</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"># macOS</span></p>
+<p class="p1"><span class="s1">.DS_Store</span></p>
+<p class="p1"><span class="s1">.AppleDouble</span></p>
+<p class="p1"><span class="s1">.LSOverride</span></p>
+<p class="p1"><span class="s1">Icon</span></p>
+<p class="p1"><span class="s1">._*</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"># Windows</span></p>
+<p class="p1"><span class="s1">Thumbs.db</span></p>
+<p class="p1"><span class="s1">Thumbs.db:encryptable</span></p>
+<p class="p1"><span class="s1">ehthumbs.db</span></p>
+<p class="p1"><span class="s1">ehthumbs_vista.db</span></p>
+<p class="p1"><span class="s1">Desktop.ini</span></p>
+<p class="p1"><span class="s1">$RECYCLE.BIN/</span></p>
+<p class="p1"><span class="s1">*.cab</span></p>
+<p class="p1"><span class="s1">*.msi</span></p>
+<p class="p1"><span class="s1">*.msix</span></p>
+<p class="p1"><span class="s1">*.msm</span></p>
+<p class="p1"><span class="s1">*.msp</span></p>
+<p class="p1"><span class="s1">*.lnk</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"># Linux</span></p>
+<p class="p1"><span class="s1">*~</span></p>
+<p class="p1"><span class="s1">.fuse_hidden*</span></p>
+<p class="p1"><span class="s1">.directory</span></p>
+<p class="p1"><span class="s1">.Trash-*</span></p>
+<p class="p1"><span class="s1">.nfs*</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">###############################################################################</span></p>
+<p class="p1"><span class="s1"># Node / JavaScript (server + client)</span></p>
+<p class="p1"><span class="s1">###############################################################################</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"># dependencies</span></p>
+<p class="p1"><span class="s1">node_modules/</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"># logs</span></p>
+<p class="p1"><span class="s1">logs/</span></p>
+<p class="p1"><span class="s1">*.log</span></p>
+<p class="p1"><span class="s1">npm-debug.log*</span></p>
+<p class="p1"><span class="s1">yarn-debug.log*</span></p>
+<p class="p1"><span class="s1">yarn-error.log*</span></p>
+<p class="p1"><span class="s1">pnpm-debug.log*</span></p>
+<p class="p1"><span class="s1">lerna-debug.log*</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"># runtime</span></p>
+<p class="p1"><span class="s1">pids/</span></p>
+<p class="p1"><span class="s1">*.pid</span></p>
+<p class="p1"><span class="s1">*.seed</span></p>
+<p class="p1"><span class="s1">*.pid.lock</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"># coverage / test artifacts</span></p>
+<p class="p1"><span class="s1">coverage/</span></p>
+<p class="p1"><span class="s1">.nyc_output/</span></p>
+<p class="p1"><span class="s1">*.lcov</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"># caches</span></p>
+<p class="p1"><span class="s1">.cache/</span></p>
+<p class="p1"><span class="s1">.tmp/</span></p>
+<p class="p1"><span class="s1">temp/</span></p>
+<p class="p1"><span class="s1">.tmp*/</span></p>
+<p class="p1"><span class="s1">.eslintcache</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">###############################################################################</span></p>
+<p class="p1"><span class="s1"># Builds (Vite/React + generic)</span></p>
+<p class="p1"><span class="s1">###############################################################################</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"># Vite / React build output</span></p>
+<p class="p1"><span class="s1">dist/</span></p>
+<p class="p1"><span class="s1">build/</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"># Vite cache (если вдруг вынесен из node_modules)</span></p>
+<p class="p1"><span class="s1">.vite/</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">###############################################################################</span></p>
+<p class="p1"><span class="s1"># Env files (секреты / локальные конфиги)</span></p>
+<p class="p1"><span class="s1">###############################################################################</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">.env</span></p>
+<p class="p1"><span class="s1">.env.local</span></p>
+<p class="p1"><span class="s1">.env.*.local</span></p>
+<p class="p1"><span class="s1">!.env.example</span></p>
+<p class="p1"><span class="s1">!.env.*.example</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">###############################################################################</span></p>
+<p class="p1"><span class="s1"># IDE / Editors</span></p>
+<p class="p1"><span class="s1">###############################################################################</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"># VS Code (берём минимум, чтобы не мешать командным настройкам)</span></p>
+<p class="p1"><span class="s1">.vscode/*</span></p>
+<p class="p1"><span class="s1">!.vscode/extensions.json</span></p>
+<p class="p1"><span class="s1">!.vscode/settings.json</span></p>
+<p class="p1"><span class="s1">!.vscode/tasks.json</span></p>
+<p class="p1"><span class="s1">!.vscode/launch.json</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"># JetBrains</span></p>
+<p class="p1"><span class="s1">.idea/</span></p>
+<p class="p1"><span class="s1">*.iml</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">###############################################################################</span></p>
+<p class="p1"><span class="s1"># Misc</span></p>
+<p class="p1"><span class="s1">###############################################################################</span></p>
+<p class="p1"><span class="s1">*.swp</span></p>
+<p class="p1"><span class="s1">*.swo</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+</body>
+</html>
