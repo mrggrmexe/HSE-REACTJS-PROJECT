@@ -88,7 +88,7 @@ a:hover {
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 12px 16px;
+  padding: 8px 16px;
   max-width: var(--container);
   margin: 0 auto;
 }
@@ -101,9 +101,10 @@ a:hover {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 7px 10px;
   border-radius: var(--r-10);
   text-decoration: none;
+  font-size: 18px;
+  padding: 5px 7px;
 }
 
 .nav a:hover {
@@ -440,7 +441,6 @@ button:disabled {
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  padding: 6px 10px;
   border-radius: var(--r-10);
   text-decoration: none;
 }
@@ -450,11 +450,9 @@ button:disabled {
   text-decoration: none;
 }
 
-/* Увеличиваем логотип */
 .brand__logo {
-  width: 56px;
-  height: 56px;
-  border-radius: 16px; /* чтобы иконка выглядела аккуратно */
+  width: 78px;
+  height: 78px;
   object-fit: cover;
 }
 
@@ -462,9 +460,9 @@ button:disabled {
 .brand__text {
   font-family: var(--font-sans);
   font-weight: 700;
-  font-size: 18px;
-  letter-spacing: 0.2px;
-  color: #86c9a3;
+  font-size: 20px;
+  letter-spacing: 0.3px;
+  color: #2fa462;
 }
 
 /* На всякий случай: не применять "active black" к бренду */
