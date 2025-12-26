@@ -182,6 +182,6 @@ Authorization: Bearer <jwt>
 1) npm run dev
 2) npm start
 
-## Лицензия
+## Автор
 
-Учебный проект.
+Штукмайстер Г.П. БПИ246
