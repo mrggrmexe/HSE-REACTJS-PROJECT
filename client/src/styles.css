@@ -5,10 +5,8 @@
 ------------------------------ */
 
 :root {
+  /* единое объявление шрифта */
   --font-sans: "Roboto", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
-
-  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Noto Sans",
-    "Helvetica Neue", sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
 
   --bg: #fafafa;
   --surface: #ffffff;
@@ -281,8 +279,6 @@ button:disabled {
   border-radius: inherit;
   z-index: 0;
   pointer-events: none;
-
-  /* если нет --tint-rgb и/или нет класса --tinted, альфа будет 0 */
   background: rgb(var(--tint-rgb, 0 0 0) / var(--tint-a-base, 0));
   transition: background 150ms ease;
 }
@@ -410,10 +406,77 @@ button:disabled {
 }
 
 /* -----------------------------
+   Support page (NEW)
+------------------------------ */
+
+.supportGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .supportGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.faq {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.faqItem {
+  border: 1px solid var(--border);
+  border-radius: var(--r-12);
+  padding: 10px 12px;
+  background: #ffffff;
+}
+
+.faqItem summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.faqItem summary:hover {
+  opacity: 0.9;
+}
+
+.faqItem[open] {
+  border-color: var(--border-strong);
+}
+
+/* textarea для формы техподдержки */
+.supportForm textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-10);
+  background: #ffffff;
+  outline: none;
+  font: inherit;
+  resize: vertical;
+}
+
+.supportForm textarea:focus {
+  border-color: #111111;
+  box-shadow: 0 0 0 4px rgba(17, 17, 17, 0.08);
+}
+
+.fieldError {
+  color: var(--danger);
+  font-size: 13px;
+  margin-top: 6px;
+}
+
+/* -----------------------------
    Focus-visible
 ------------------------------ */
 
-:where(a, button, input):focus-visible {
+:where(a, button, input, textarea):focus-visible {
   outline: none;
   box-shadow: 0 0 0 4px rgba(17, 17, 17, 0.10);
   border-color: #111111;
@@ -437,6 +500,11 @@ button:disabled {
     padding: 14px;
   }
 }
+
+/* -----------------------------
+   Brand (logo + text)
+------------------------------ */
+
 .brand {
   display: inline-flex;
   align-items: center;
@@ -456,7 +524,6 @@ button:disabled {
   object-fit: cover;
 }
 
-/* Подпись: Roboto + пастельно-зелёный */
 .brand__text {
   font-family: var(--font-sans);
   font-weight: 700;
@@ -465,9 +532,7 @@ button:disabled {
   color: #2fa462;
 }
 
-/* На всякий случай: не применять "active black" к бренду */
 .nav .brand.active {
   background: transparent;
   color: inherit;
 }
-

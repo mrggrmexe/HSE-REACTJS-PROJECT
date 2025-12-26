@@ -3,7 +3,6 @@ import { NavLink, Outlet, Link } from "react-router-dom";
 import { useAuth } from "../auth/AuthContext.jsx";
 import logo from "../assets/brand/logo.png";
 
-
 export default function Layout() {
   const { isAuthed, logout } = useAuth();
 
@@ -23,6 +22,11 @@ export default function Layout() {
           )}
 
           <div className="spacer" />
+
+          {/* Техподдержка слева от Login/Logout */}
+          <NavLink to="/support" end>
+            Support
+          </NavLink>
 
           {!isAuthed ? (
             <NavLink to="/login" end>
