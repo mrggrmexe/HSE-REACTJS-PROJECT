@@ -224,6 +224,22 @@ button:disabled {
 }
 
 /* -----------------------------
+   Auth page centering
+------------------------------ */
+
+.authPage {
+  padding: 24px 16px;
+  display: flex;
+  justify-content: center;
+}
+
+.authCard {
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+/* -----------------------------
    Goods grid + product cards
 ------------------------------ */
 
@@ -236,16 +252,54 @@ button:disabled {
 }
 
 .goodCard {
+  position: relative;
+  overflow: hidden;
+
   display: flex;
   flex-direction: column;
   gap: 10px;
   min-height: 210px;
+
   transition: box-shadow 0.15s ease, transform 0.15s ease;
 }
 
-.goodCard:hover {
-  box-shadow: var(--shadow-md);
-  transform: translateY(-1px);
+/* ТОЛЬКО для карточек с оттенком:
+   база 20%, на hover 50% */
+.goodCard--tinted {
+  --tint-a-base: 0.20;
+  --tint-a-hover: 0.50;
+}
+
+/* Подложка с оттенком */
+.goodCard::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  z-index: 0;
+  pointer-events: none;
+
+  /* если нет --tint-rgb и/или нет класса --tinted, альфа будет 0 */
+  background: rgb(var(--tint-rgb, 0 0 0) / var(--tint-a-base, 0));
+  transition: background 150ms ease;
+}
+
+/* Контент выше подложки */
+.goodCard > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Hover: увеличиваем альфу до 50% */
+@media (hover: hover) {
+  .goodCard--tinted:hover::before {
+    background: rgb(var(--tint-rgb, 0 0 0) / var(--tint-a-hover, 0.50));
+  }
+
+  .goodCard:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-1px);
+  }
 }
 
 .goodCard__media {
@@ -320,7 +374,7 @@ button:disabled {
 }
 
 /* -----------------------------
-   Details page
+   Details page (optional)
 ------------------------------ */
 
 .detailsGrid {
@@ -353,6 +407,16 @@ button:disabled {
 }
 
 /* -----------------------------
+   Focus-visible
+------------------------------ */
+
+:where(a, button, input):focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(17, 17, 17, 0.10);
+  border-color: #111111;
+}
+
+/* -----------------------------
    Mobile tweaks
 ------------------------------ */
 
@@ -370,54 +434,3 @@ button:disabled {
     padding: 14px;
   }
 }
-
-/* Center login card (horizontal + nice spacing) */
-.authPage {
-  padding: 24px 16px;
-  display: flex;
-  justify-content: center; /* center horizontally */
-}
-
-.authCard {
-  width: 100%;
-  max-width: 520px;
-  margin: 0 auto; /* safe centering for block as well */ 
-}
-
-/* Hover highlights (only where hover exists) */
-@media (hover: hover) {
-  .nav a,
-  button,
-  .goodCard__btn,
-  .card {
-    transition: background 150ms ease, box-shadow 150ms ease, border-color 150ms ease, transform 150ms ease;
-  }
-
-  .card:hover {
-    border-color: var(--border-strong);
-    box-shadow: var(--shadow-md);
-  }
-
-  button:hover,
-  .goodCard__btn:hover {
-    background: #f3f4f6;
-    box-shadow: var(--shadow-sm);
-  }
-
-  .nav a:hover {
-    background: #f3f4f6;
-    text-decoration: none;
-  }
-
-  .goodCard__btn:hover {
-    text-decoration: none;
-  }
-}
-
-/* Keyboard accessibility (приятно, и не мешает) */
-:where(a, button, input):focus-visible {
-  outline: none;
-  box-shadow: 0 0 0 4px rgba(17, 17, 17, 0.10);
-  border-color: #111111;
-}
-
