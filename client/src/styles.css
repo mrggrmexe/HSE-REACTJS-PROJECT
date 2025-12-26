@@ -5,7 +5,6 @@
 ------------------------------ */
 
 :root {
-  /* единое объявление шрифта */
   --font-sans: "Roboto", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
 
   --bg: #fafafa;
@@ -32,6 +31,12 @@
   box-sizing: border-box;
 }
 
+html,
+body,
+#root {
+  height: 100%;
+}
+
 html {
   font-family: var(--font-sans);
   color: var(--text);
@@ -42,10 +47,17 @@ html {
 
 body {
   margin: 0;
-  min-height: 100vh;
   background: var(--bg);
   color: var(--text);
   font-family: var(--font-sans);
+}
+
+/* анти-стили vite template, чтобы ничего не сжимало ширину */
+#root {
+  width: 100%;
+  max-width: none;
+  padding: 0;
+  text-align: initial;
 }
 
 img,
@@ -64,6 +76,17 @@ a:hover {
 }
 
 /* -----------------------------
+   App shell (header/main/footer)
+------------------------------ */
+
+.appShell {
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  width: 100%;
+}
+
+/* -----------------------------
    Layout
 ------------------------------ */
 
@@ -71,6 +94,7 @@ a:hover {
   max-width: var(--container);
   margin: 0 auto;
   padding: 16px;
+  width: 100%;
 }
 
 .header {
@@ -113,6 +137,47 @@ a:hover {
 .nav a.active {
   background: #111111;
   color: #ffffff;
+}
+
+/* -----------------------------
+   Footer
+------------------------------ */
+
+.footer {
+  border-top: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+}
+
+.footer__inner {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.footer__copyright {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* в футере — обычная серая ссылка */
+.footer__link {
+  color: var(--muted);
+  background: transparent;
+  border: none;
+  padding: 0;
+  border-radius: 0;
+  text-decoration: none;
+}
+
+.footer__link:hover {
+  background: transparent;
+  text-decoration: underline;
 }
 
 /* -----------------------------
@@ -250,6 +315,7 @@ button:disabled {
   gap: 14px;
   margin-top: 14px;
   align-items: stretch;
+  width: 100%;
 }
 
 .goodCard {
@@ -264,14 +330,11 @@ button:disabled {
   transition: box-shadow 0.15s ease, transform 0.15s ease;
 }
 
-/* ТОЛЬКО для карточек с оттенком:
-   база 20%, на hover 50% */
 .goodCard--tinted {
   --tint-a-base: 0.20;
   --tint-a-hover: 0.50;
 }
 
-/* Подложка с оттенком */
 .goodCard::before {
   content: "";
   position: absolute;
@@ -279,17 +342,16 @@ button:disabled {
   border-radius: inherit;
   z-index: 0;
   pointer-events: none;
+
   background: rgb(var(--tint-rgb, 0 0 0) / var(--tint-a-base, 0));
   transition: background 150ms ease;
 }
 
-/* Контент выше подложки */
 .goodCard > * {
   position: relative;
   z-index: 1;
 }
 
-/* Hover: увеличиваем альфу до 50% */
 @media (hover: hover) {
   .goodCard--tinted:hover::before {
     background: rgb(var(--tint-rgb, 0 0 0) / var(--tint-a-hover, 0.50));
@@ -406,7 +468,7 @@ button:disabled {
 }
 
 /* -----------------------------
-   Support page (NEW)
+   Support page
 ------------------------------ */
 
 .supportGrid {
@@ -449,7 +511,6 @@ button:disabled {
   border-color: var(--border-strong);
 }
 
-/* textarea для формы техподдержки */
 .supportForm textarea {
   width: 100%;
   padding: 10px 12px;
@@ -498,6 +559,10 @@ button:disabled {
 
   .card {
     padding: 14px;
+  }
+
+  .footer__inner {
+    padding: 10px 12px;
   }
 }
 

@@ -5,9 +5,10 @@ import logo from "../assets/brand/logo.png";
 
 export default function Layout() {
   const { isAuthed, logout } = useAuth();
+  const year = new Date().getFullYear();
 
   return (
-    <>
+    <div className="appShell">
       <header className="header">
         <nav className="nav">
           <Link to="/" className="brand" aria-label="Fruit Shop">
@@ -23,7 +24,6 @@ export default function Layout() {
 
           <div className="spacer" />
 
-          {/* Техподдержка слева от Login/Logout */}
           <NavLink to="/support" end>
             Support
           </NavLink>
@@ -40,9 +40,18 @@ export default function Layout() {
         </nav>
       </header>
 
-      <main className="container">
+      <main className="container appMain">
         <Outlet />
       </main>
-    </>
+
+      <footer className="footer" role="contentinfo">
+        <div className="footer__inner">
+          <span className="footer__copyright">© {year} Fruit Shop</span>
+          <Link className="footer__link" to="/support">
+            Support
+          </Link>
+        </div>
+      </footer>
+    </div>
   );
 }
