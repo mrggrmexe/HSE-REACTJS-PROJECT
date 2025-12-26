@@ -4,7 +4,6 @@ import helmet from "helmet";
 import compression from "compression";
 import path from "path";
 import fs from "fs";
-import { fileURLToPath } from "url";
 
 import { env } from "./config/env.js";
 import { requestId } from "./middleware/requestId.js";
@@ -19,9 +18,10 @@ import pinoHttp from "pino-http";
 export function createApp() {
   const app = express();
 
-  // За прокси (Render/Heroku/Nginx) корректно определяем IP (важно для rate limit)
+  // Прокси может стоять перед Node, но для rate limit учитываем доверие к proxy
   app.set("trust proxy", 1);
 
+  // Логгер (pino)
   const logger = pino({
     level: env.NODE_ENV === "production" ? "info" : "debug"
   });
@@ -33,15 +33,15 @@ export function createApp() {
     })
   );
 
+  // Вставляем requestId (аксесс-лог / trace)
   app.use(requestId());
 
-  // Security headers (Helmet — best practice)
+  // Безопасные заголовки
   app.use(helmet());
   app.use(compression());
-
   app.use(express.json({ limit: "128kb" }));
 
-  // CORS нужен только если клиент отдельно (dev)
+  // CORS (если укажешь VITE_PROXY_TARGET в dev, то в prod можно отключить)
   if (env.CORS_ORIGIN) {
     app.use(
       cors({
@@ -51,46 +51,41 @@ export function createApp() {
     );
   }
 
-  // Rate limit на /api
+  // Rate limit на API
   app.use("/api", apiLimiter());
 
-  // API
+  // ==== API ====
   app.use("/api", apiRouter);
 
-  // ----- Serve React build (если есть) -----
-  // Express static middleware (официальный способ)
-  const __filename = fileURLToPath(import.meta.url);
-  const __dirname = path.dirname(__filename);
+  // ==== Static + SPA fallback ====
 
-  const buildDir = path.resolve(__dirname, "..", env.CLIENT_BUILD_PATH);
-  const indexHtml = path.join(buildDir, "index.html");
+  // Путь к сборке React
+  const buildRoot = path.resolve(process.cwd(), env.CLIENT_BUILD_PATH);
+
+  // index.html должен существовать
+  const indexHtml = path.join(buildRoot, "index.html");
 
   if (fs.existsSync(indexHtml)) {
-    // статика
-    app.use(
-      express.static(buildDir, {
-        maxAge: env.NODE_ENV === "production" ? "7d" : 0,
-        etag: true
-      })
-    );
+    app.use(express.static(buildRoot));
 
-    // SPA fallback: всё, что НЕ /api, отдаём index.html
+    // Любой GET-запрос, который **не начинается с /api/** — отдаём index.html
     app.get(/^\/(?!api\/).*/, (req, res) => {
       res.sendFile(indexHtml);
     });
   } else {
     if (env.NODE_ENV !== "production") {
-      console.log(
-        `[server] React build not found at: ${buildDir}. ` +
-          `Build client and/or set CLIENT_BUILD_PATH.`
+      console.warn(
+        `[server] React build not found at: ${buildRoot}.` +
+          ` Make sure to run "npm run build" in client.`
       );
     }
   }
 
-  // 404 + error handler (в конце)
+  // 404 для прочих маршрутов
   app.use(notFound());
+
+  // Глобальный error handler
   app.use(errorHandler());
 
   return app;
 }
-
