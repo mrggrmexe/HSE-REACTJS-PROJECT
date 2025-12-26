@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../auth/AuthContext.jsx";
 import { useServerGoods } from "../hooks/useServerGoods.js";
+import GoodCard from "../components/GoodCard.jsx";
 
 export default function GoodsPage() {
   const { token, logout } = useAuth();
@@ -12,7 +13,6 @@ export default function GoodsPage() {
     initialLimit: 10
   });
 
-  // Если токен протух/неверный и сервер вернул 401 — вылогиним
   useEffect(() => {
     if (requestError?.status === 401) {
       logout();
@@ -31,13 +31,11 @@ export default function GoodsPage() {
           <p className="error">Ошибка запроса: {requestError.message}</p>
         )}
 
-        <ul className="list">
+        <div className="goodsGrid">
           {items.map((g) => (
-            <li key={g.id}>
-              <Link to={`/goods/${g.id}`}>{g.name}</Link> — €{g.price} — {g.releaseDate}
-            </li>
+            <GoodCard key={g.id} good={g} />  // key обязателен :contentReference[oaicite:3]{index=3}
           ))}
-        </ul>
+        </div>
 
         <div style={{ marginTop: 12 }}>
           <button onClick={loadMore} disabled={loading || !hasMore}>
@@ -48,4 +46,3 @@ export default function GoodsPage() {
     </div>
   );
 }
-
