@@ -2,7 +2,7 @@
 
 Прототип интернет-магазина (вариант: фрукты) с авторизацией, защищёнными маршрутами, загрузкой списка товаров с пагинацией и страницей товара. Клиент — SPA на React Router. Сервер — Express с REST API и раздачей production-сборки клиента.
 
-<img width="1680" height="872" alt="Снимок экрана 2025-12-26 в 18 45 47" src="https://github.com/user-attachments/assets/6d6b5b3c-a987-4a43-b1ee-fbbafd1bfeea" />
+<img width="1676" height="876" alt="Снимок экрана 2025-12-26 в 20 05 54" src="https://github.com/user-attachments/assets/e32cc465-d434-4ad9-93b4-e561c25def39" />
 
 
 ## Что реализовано
