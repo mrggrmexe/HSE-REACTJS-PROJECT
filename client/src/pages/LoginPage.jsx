@@ -65,36 +65,38 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="card col" style={{ maxWidth: 520 }}>
-      <h2>Login</h2>
+    <div className="authPage">
+      <div className="card col authCard">
+        <h2>Login</h2>
 
-      <form onSubmit={onSubmit} className="col">
-        <label className="col">
-          <span className="muted">Логин</span>
-          <input name="login" value={form.login} onChange={onChange} autoComplete="username" />
-        </label>
+        <form onSubmit={onSubmit} className="col">
+          <label className="col">
+            <span className="muted">Логин</span>
+            <input name="login" value={form.login} onChange={onChange} autoComplete="username" />
+          </label>
 
-        <label className="col">
-          <span className="muted">Пароль</span>
-          <input
-            name="password"
-            value={form.password}
-            onChange={onChange}
-            type="password"
-            autoComplete="current-password"
-          />
-        </label>
+          <label className="col">
+            <span className="muted">Пароль</span>
+            <input
+              name="password"
+              value={form.password}
+              onChange={onChange}
+              type="password"
+              autoComplete="current-password"
+            />
+          </label>
 
-        {errorText && <p className="error">{errorText}</p>}
+          {errorText && <p className="error">{errorText}</p>}
 
-        <button disabled={loading} type="submit">
-          {loading ? "Загрузка…" : "Войти"}
-        </button>
+          <button disabled={loading} type="submit">
+            {loading ? "Загрузка…" : "Войти"}
+          </button>
 
-        <p className="muted">
-          Для демо подойдёт любой непустой логин/пароль.
-        </p>
-      </form>
+          <p className="muted">
+            Для демо подойдёт любой непустой логин/пароль.
+          </p>
+        </form>
+      </div>
     </div>
   );
 }
