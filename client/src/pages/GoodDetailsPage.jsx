@@ -2,6 +2,13 @@ import React, { useEffect, useRef, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useAuth } from "../auth/AuthContext.jsx";
 import { apiRequest, ApiError } from "../services/api.js";
+import { fruitImages } from "../assets/fruits/index.js";
+
+function pickFruitKey(name) {
+  // Поддержка формата "Apple #12" -> "Apple"
+  // Если у тебя названия другие — поправим эту функцию.
+  return String(name || "").trim().split(/\s+/)[0];
+}
 
 export default function GoodDetailsPage() {
   const { id } = useParams();
@@ -49,6 +56,7 @@ export default function GoodDetailsPage() {
 
   if (loading) return <p>Загрузка…</p>;
   if (connectionError) return <p className="error">Ошибка соединения</p>;
+
   if (errorText) {
     return (
       <div className="card col">
@@ -59,26 +67,40 @@ export default function GoodDetailsPage() {
       </div>
     );
   }
+
   if (!item) return null;
 
+  const fruitKey = pickFruitKey(item.name);
+  const imgSrc = fruitImages[fruitKey];
+
   return (
-    <div className="card col">
+    <div className="col" style={{ gap: 12 }}>
       <p className="muted">
         <Link to="/goods">← Back to list</Link>
       </p>
 
-      <h2>{item.name}</h2>
+      <div className="detailsGrid">
+        <div className="card detailsMedia">
+          {imgSrc ? (
+            <img className="detailsImg" src={imgSrc} alt={fruitKey} />
+          ) : (
+            <div className="goodCard__imgPlaceholder" />
+          )}
+        </div>
 
-      {/* обязательные поля по ТЗ */}
-      <p>
-        <b>Дата выпуска:</b> {item.releaseDate}
-      </p>
-      <p>
-        <b>Цена:</b> €{item.price}
-      </p>
+        <div className="card col">
+          <h2>{item.name}</h2>
 
-      {item.description && <p className="muted">{item.description}</p>}
+          <p>
+            <b>Дата выпуска:</b> {item.releaseDate}
+          </p>
+          <p>
+            <b>Цена:</b> €{item.price}
+          </p>
+
+          {item.description ? <p className="muted">{item.description}</p> : null}
+        </div>
+      </div>
     </div>
   );
 }
-

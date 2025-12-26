@@ -5,29 +5,24 @@
 ------------------------------ */
 
 :root {
-  /* Typography */
-  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Noto Sans", "Helvetica Neue",
-    sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Noto Sans",
+    "Helvetica Neue", sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
 
-  /* Colors */
   --bg: #fafafa;
   --surface: #ffffff;
   --text: #111111;
-  --muted: #6b7280;      /* gray-500-ish */
-  --border: #e5e7eb;     /* gray-200-ish */
+  --muted: #6b7280;
+  --border: #e5e7eb;
   --border-strong: #d1d5db;
 
   --danger: #b00020;
 
-  /* Spacing + radius */
   --r-12: 12px;
   --r-10: 10px;
-  --r-8: 8px;
 
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
   --shadow-md: 0 10px 25px rgba(0, 0, 0, 0.06);
 
-  /* Layout */
   --container: 980px;
 }
 
@@ -123,7 +118,9 @@ a:hover {
    Typography helpers
 ------------------------------ */
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   margin: 0 0 10px;
   line-height: 1.15;
 }
@@ -207,7 +204,7 @@ button:disabled {
 }
 
 /* -----------------------------
-   Utility layout helpers
+   Utility helpers
 ------------------------------ */
 
 .row {
@@ -238,18 +235,40 @@ button:disabled {
   align-items: stretch;
 }
 
-/* Карточка товара (если ты используешь GoodCard.jsx) */
 .goodCard {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  min-height: 150px;
+  min-height: 210px;
   transition: box-shadow 0.15s ease, transform 0.15s ease;
 }
 
 .goodCard:hover {
   box-shadow: var(--shadow-md);
   transform: translateY(-1px);
+}
+
+.goodCard__media {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: 6px;
+}
+
+.goodCard__img {
+  width: 100%;
+  max-width: 220px;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+}
+
+.goodCard__imgPlaceholder {
+  width: 100%;
+  max-width: 220px;
+  aspect-ratio: 1 / 1;
+  border: 1px dashed var(--border);
+  border-radius: var(--r-12);
+  background: #fafafa;
 }
 
 .goodCard__header {
@@ -298,6 +317,39 @@ button:disabled {
 .goodCard__btn:hover {
   background: #f3f4f6;
   text-decoration: none;
+}
+
+/* -----------------------------
+   Details page
+------------------------------ */
+
+.detailsGrid {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 14px;
+  align-items: start;
+}
+
+.detailsMedia {
+  display: grid;
+  place-items: center;
+}
+
+.detailsImg {
+  width: 100%;
+  max-width: 320px;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+}
+
+@media (max-width: 820px) {
+  .detailsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .detailsImg {
+    max-width: 280px;
+  }
 }
 
 /* -----------------------------
