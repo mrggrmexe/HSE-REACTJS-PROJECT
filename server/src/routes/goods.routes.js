@@ -5,6 +5,8 @@ import { listGoods, getGoodById } from "../controllers/goods.controller.js";
 
 export const goodsRouter = Router();
 
-goodsRouter.get("/", requireAuth(), asyncHandler(listGoods));
-goodsRouter.get("/:id", requireAuth(), asyncHandler(getGoodById));
+// /api/goods?page=1&limit=10
+goodsRouter.get("/goods", requireAuth(), asyncHandler(listGoods));
 
+// /api/goods/:id
+goodsRouter.get("/goods/:id", requireAuth(), asyncHandler(getGoodById));
